@@ -1,10 +1,10 @@
 flowchart TD
   %% Start
   Start(["Partner Account Registration & Reflected in CRM"])
-
-  %% Initial Trigger
   Trigger01{{📌 Trigger01: Partner Account Reflected in CRM}}
   EDM01["📧 EDM01: Welcome & Agreement Check Request"]
+
+  Start --> Trigger01 --> EDM01
 
   %% Agreement Check Branch
   Trigger02{{📌 Trigger02: Agreement Status Check}}
