@@ -24,7 +24,7 @@ Addressing partner inactivity and maintaining healthy engagement levels are crit
 This EDM automation project was initiated to proactively guide new partners through their first month of onboarding. It provides timely answers to common questions and reinforces engagement through milestone-based communications.  
 By analysing the first month’s behavioural data (e.g., agreement status, referral activities, portal usage), partners showing active engagement are nurtured further through this flow.
 
-Partners not reaching the desired activity levels within the first month will be transitioned into a separate re-engagement system designed explicitly for inactive partners.  
+Partners who do not reach the desired activity levels within the first month will be transitioned into a separate re-engagement system designed specifically for inactive partners.  
 This two-tiered approach maximises operational efficiency, personalises partner communications, and minimises long-term churn risk.
 
 ---
@@ -41,7 +41,7 @@ This two-tiered approach maximises operational efficiency, personalises partner 
 
 - 📌 CRM reflects new partner account → triggers a "Welcome & Agreement Check" email.
 - 📌 Agreement completion → triggers partner portal usage guide.
-- 📌 Milestone-based automated messages (7 days, 1 month, etc.) guide early engagement.
+- 📌 Milestone-based automated messages (7 days, 14 days, 1 month, etc.) guide early engagement.
 - 📌 Referral achievement triggers personalised congratulations emails.
 - 📌 Inactivity or low engagement after 1 month triggers transition to a re-engagement flow.
 - 📌 Birthday automation included for personalised engagement.
