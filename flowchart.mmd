@@ -1,0 +1,67 @@
+flowchart TD
+  %% Start
+  Start([Partner Account Created & Reflected in CRM])
+
+  %% Initial Trigger
+  Trigger01{{📌 Trigger01: CRM Reflects New Partner Account}}
+  EDM01_02[📧 EDM01/02: Welcome & Agreement Check Request]
+
+  %% Agreement Check Branch
+  Trigger02{{📌 Trigger02: Portal Agreement Status Check}}
+  EDM_Remind[📧 EDM Reminder: If Agreement Not Checked]
+  EDM03[📧 EDM03: How to Customize Your IB Link]
+
+  %% Next Phase
+  EDM04[📧 EDM04: How to Use the Partner Portal]
+  EDM05[📧 EDM05: Tips for Client Acquisition]
+
+  %% Success Story Emails (Split into 3 Parts)
+  EDM06a[📧 EDM06-1: Success Story Part 1]
+  EDM06b[📧 EDM06-2: Success Story Part 2]
+  EDM06c[📧 EDM06-3: Success Story Part 3]
+   
+  %% Inactive Partner Trigger
+  Trigger08a{{📌 Trigger03: No Referrals Acquired by This Point}}
+  EDM08a[📧 EDM08A: Stuck in Your Referral Journey?]
+
+  %% Milestone Emails
+  Trigger09a{{📌 Trigger04: 7 Days Since Partner Start}}
+  EDM09A[📧 EDM09A: 1-Week Anniversary Email]
+
+  Trigger09b{{📌 Trigger05: 30 Days Since Partner Start}}
+  EDM09B[📧 EDM09B: 1-Month Anniversary Email]
+
+  Trigger09c{{📌 Trigger06: 3 Months Since Partner Start}}
+  EDM09C[📧 EDM09C: 3-Month Anniversary Email]
+
+  Trigger09d{{📌 Trigger07: 6 Months Since Partner Start}}
+  EDM09D[📧 EDM09D: 6-Month Anniversary Email]
+
+  Trigger09e{{📌 Trigger08: 9 Months Since Partner Start}}
+  EDM09E[📧 EDM09E: 9-Month Anniversary Email]
+
+  Trigger09f{{📌 Trigger09: 1 Year Since Partner Start}}
+  EDM09F[📧 EDM09F: 1-Year Anniversary Email]
+
+  %% Immediate Referral Celebration Triggers
+  Trigger09h{{📌 Trigger10: First Referral Acquired}}
+  EDM09H[📧 EDM09H: Congratulations on First Referral]
+
+  Trigger09i{{📌 Trigger11: 10 Referrals Acquired}}
+  EDM09I[📧 EDM09I: Congratulations on 10 Referrals]
+
+  %% Birthday Trigger
+  Trigger09g{{📌 Trigger12: Partner's Birthday}}
+  EDM09G[📧 EDM09G: Happy Birthday Message]
+
+  %% Flow Connections
+  Start --> Trigger01 --> EDM01_02
+  EDM01_02 --> Trigger02 -- "✓ Agreement Checked" --> EDM03
+  Trigger02 -- "✗ Agreement Unchecked" --> EDM_Remind --> EDM03
+  
+  EDM03 --> EDM04 --> EDM05
+  EDM05 --> EDM06a --> EDM06b --> EDM06c --> Trigger08a --> EDM08a
+  
+  EDM01_02 --> Trigger09a --> EDM09A --> Trigger09b --> EDM09B --> Trigger09c --> EDM09C --> Trigger09d --> EDM09D --> Trigger09e --> EDM09E --> Trigger09f --> EDM09F
+  EDM01_02 --> Trigger09g --> EDM09G
+  EDM01_02 --> Trigger09h --> EDM09H --> Trigger09i --> EDM09I
