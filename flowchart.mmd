@@ -1,67 +1,54 @@
 flowchart TD
   %% Start
-  Start([Partner Account Created & Reflected in CRM])
+  Start(["Partner Account Registration & Reflected in CRM"])
 
   %% Initial Trigger
-  Trigger01{{📌 Trigger01: CRM Reflects New Partner Account}}
-  EDM01_02[📧 EDM01/02: Welcome & Agreement Check Request]
+  Trigger01{{📌 Trigger01: Partner Account Reflected in CRM}}
+  EDM01["📧 EDM01: Welcome & Agreement Check Request"]
 
   %% Agreement Check Branch
-  Trigger02{{📌 Trigger02: Portal Agreement Status Check}}
-  EDM_Remind[📧 EDM Reminder: If Agreement Not Checked]
-  EDM03[📧 EDM03: How to Customize Your IB Link]
+  Trigger02{{📌 Trigger02: Agreement Status Check}}
+  Trigger13{{📌 Trigger13: First Referral Acquired}}
 
-  %% Next Phase
-  EDM04[📧 EDM04: How to Use the Partner Portal]
-  EDM05[📧 EDM05: Tips for Client Acquisition]
+  EDM01 --> Trigger02 & Trigger13
+  Trigger02 -- ✓ Checked --> EDM02["📧 EDM02: How to Customize Your Partner Link"]
+  Trigger02 -- ✗ Unchecked --> EDM03["📧 EDM03: Reminder: Complete Agreement"]
+  EDM03 --> EDM02
 
-  %% Success Story Emails (Split into 3 Parts)
-  EDM06a[📧 EDM06-1: Success Story Part 1]
-  EDM06b[📧 EDM06-2: Success Story Part 2]
-  EDM06c[📧 EDM06-3: Success Story Part 3]
-   
-  %% Inactive Partner Trigger
-  Trigger08a{{📌 Trigger03: No Referrals Acquired by This Point}}
-  EDM08a[📧 EDM08A: Stuck in Your Referral Journey?]
+  %% Portal Guidance
+  EDM02 --> EDM04["📧 EDM04: How to Use the Partner Portal"]
 
   %% Milestone Emails
-  Trigger09a{{📌 Trigger04: 7 Days Since Partner Start}}
-  EDM09A[📧 EDM09A: 1-Week Anniversary Email]
+  EDM04 --> Trigger03{{📌 Trigger03: 7 Days After Start}}
+  Trigger03 --> EDM05["📧 EDM05: 1-Week Anniversary Email"]
+  EDM05 --> EDM06["📧 EDM06: Tips for Client Acquisition"]
+  EDM06 --> EDM07["📧 EDM07: How to Promote Our Strengths"]
 
-  Trigger09b{{📌 Trigger05: 30 Days Since Partner Start}}
-  EDM09B[📧 EDM09B: 1-Month Anniversary Email]
+  EDM07 --> Trigger04{{📌 Trigger04: 14 Days After Start}}
+  Trigger04 --> EDM08["📧 EDM08: Common Mistakes for New Partners"]
+  EDM08 --> EDM09["📧 EDM09: Keys to Successful Partnering"]
+  EDM09 --> EDM10["📧 EDM10: Let's Get Your First Referral!"]
+  EDM10 --> EDM11["📧 EDM11: Success Story (Quick Version)"]
 
-  Trigger09c{{📌 Trigger06: 3 Months Since Partner Start}}
-  EDM09C[📧 EDM09C: 3-Month Anniversary Email]
+  EDM11 --> Trigger05{{📌 Trigger05: 1 Month After Start}}
+  Trigger05 --> EDM12["📧 EDM12: 1-Month Anniversary Email"]
 
-  Trigger09d{{📌 Trigger07: 6 Months Since Partner Start}}
-  EDM09D[📧 EDM09D: 6-Month Anniversary Email]
+  %% Referral Check After 1 Month
+  EDM12 --> Trigger06{{📌 Trigger06: Referral Status After 1 Month}}
+  Trigger06 -- With Referral --> EDM13["📧 EDM13: Keep Up the Great Work!"]
+  Trigger06 -- No Referral --> EDM14["📧 EDM14: Stuck on Getting Referrals?"]
+  EDM14 --> EDM15["📧 EDM15: Partner Success Story Part 1"]
+  EDM15 --> EDM16["📧 EDM16: Partner Success Story Part 2"]
+  EDM16 --> EDM17["📧 EDM17: Partner Success Story Part 3"]
 
-  Trigger09e{{📌 Trigger08: 9 Months Since Partner Start}}
-  EDM09E[📧 EDM09E: 9-Month Anniversary Email]
+  %% First Referral Congratulation
+  Trigger13 --> EDM18["📧 EDM18: 🎉 Congratulations on Your First Referral!"]
 
-  Trigger09f{{📌 Trigger09: 1 Year Since Partner Start}}
-  EDM09F[📧 EDM09F: 1-Year Anniversary Email]
-
-  %% Immediate Referral Celebration Triggers
-  Trigger09h{{📌 Trigger10: First Referral Acquired}}
-  EDM09H[📧 EDM09H: Congratulations on First Referral]
-
-  Trigger09i{{📌 Trigger11: 10 Referrals Acquired}}
-  EDM09I[📧 EDM09I: Congratulations on 10 Referrals]
-
-  %% Birthday Trigger
-  Trigger09g{{📌 Trigger12: Partner's Birthday}}
-  EDM09G[📧 EDM09G: Happy Birthday Message]
-
-  %% Flow Connections
-  Start --> Trigger01 --> EDM01_02
-  EDM01_02 --> Trigger02 -- "✓ Agreement Checked" --> EDM03
-  Trigger02 -- "✗ Agreement Unchecked" --> EDM_Remind --> EDM03
-  
-  EDM03 --> EDM04 --> EDM05
-  EDM05 --> EDM06a --> EDM06b --> EDM06c --> Trigger08a --> EDM08a
-  
-  EDM01_02 --> Trigger09a --> EDM09A --> Trigger09b --> EDM09B --> Trigger09c --> EDM09C --> Trigger09d --> EDM09D --> Trigger09e --> EDM09E --> Trigger09f --> EDM09F
-  EDM01_02 --> Trigger09g --> EDM09G
-  EDM01_02 --> Trigger09h --> EDM09H --> Trigger09i --> EDM09I
+  %% Styles
+  style Trigger01 fill:#ffebee,stroke:#ef5350,color:#b71c1c
+  style Trigger02 fill:#ffebee,stroke:#ef5350,color:#b71c1c
+  style Trigger03 fill:#ffebee,stroke:#ef5350,color:#b71c1c
+  style Trigger04 fill:#ffebee,stroke:#ef5350,color:#b71c1c
+  style Trigger05 fill:#ffebee,stroke:#ef5350,color:#b71c1c
+  style Trigger06 fill:#ffebee,stroke:#ef5350,color:#b71c1c
+  style Trigger13 fill:#ffebee,stroke:#ef5350,color:#b71c1c
